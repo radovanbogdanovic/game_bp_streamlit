@@ -44,9 +44,11 @@ def inject_styles() -> None:
         """
         <style>
         .stApp {
+            color: #2f241d;
             background:
-                radial-gradient(circle at top left, rgba(244, 206, 118, 0.24), transparent 28%),
-                linear-gradient(180deg, #f7f1e8 0%, #efe3d1 100%);
+                radial-gradient(circle at top left, rgba(244, 206, 118, 0.26), transparent 24%),
+                radial-gradient(circle at top right, rgba(113, 160, 196, 0.10), transparent 22%),
+                linear-gradient(180deg, #f6efe5 0%, #eadbc5 100%);
         }
 
         [data-testid="stHeader"] {
@@ -57,15 +59,94 @@ def inject_styles() -> None:
             padding-top: 1.4rem;
         }
 
+        .page-header {
+            margin-bottom: 1.2rem;
+        }
+
+        .page-title {
+            color: #241812;
+            font-size: clamp(2.3rem, 5vw, 3.45rem);
+            line-height: 0.98;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin: 0;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        .page-subtitle {
+            color: #735844;
+            font-size: 1rem;
+            line-height: 1.55;
+            margin: 0.5rem 0 0;
+            max-width: 46rem;
+        }
+
+        h1,
+        [data-testid="stHeading"] h1 {
+            color: #241812 !important;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        [data-testid="stCaptionContainer"] p {
+            color: #735844 !important;
+            font-size: 0.98rem !important;
+            font-weight: 600;
+        }
+
         .hero-card,
         .question-card,
         .summary-card,
         .review-card {
-            background: rgba(255, 250, 243, 0.92);
+            position: relative;
+            overflow: hidden;
             border: 1px solid rgba(122, 92, 61, 0.18);
             border-radius: 24px;
-            box-shadow: 0 22px 44px rgba(76, 55, 34, 0.08);
+            box-shadow: 0 22px 44px rgba(76, 55, 34, 0.10);
             padding: 1.35rem 1.4rem;
+        }
+
+        .hero-card {
+            background: linear-gradient(145deg, rgba(255, 250, 243, 0.96), rgba(248, 238, 223, 0.92));
+        }
+
+        .question-card {
+            background: linear-gradient(145deg, rgba(255, 251, 246, 0.97), rgba(246, 234, 217, 0.95));
+        }
+
+        .summary-card {
+            background: linear-gradient(145deg, rgba(255, 252, 248, 0.97), rgba(244, 235, 221, 0.94));
+        }
+
+        .review-card {
+            background: linear-gradient(145deg, rgba(255, 252, 247, 0.97), rgba(239, 232, 223, 0.95));
+        }
+
+        .hero-card::before,
+        .question-card::before,
+        .summary-card::before,
+        .review-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+        }
+
+        .hero-card::before {
+            background: linear-gradient(180deg, #c67235 0%, #9d432d 100%);
+        }
+
+        .question-card::before {
+            background: linear-gradient(180deg, #c68b45 0%, #84532d 100%);
+        }
+
+        .summary-card::before {
+            background: linear-gradient(180deg, #ae7748 0%, #6d4631 100%);
+        }
+
+        .review-card::before {
+            background: linear-gradient(180deg, #4a768d 0%, #305569 100%);
         }
 
         .eyebrow {
@@ -111,7 +192,8 @@ def inject_styles() -> None:
         }
 
         .metric-shell {
-            background: rgba(122, 92, 61, 0.08);
+            background: linear-gradient(180deg, rgba(193, 150, 95, 0.18), rgba(122, 92, 61, 0.08));
+            border: 1px solid rgba(122, 92, 61, 0.12);
             border-radius: 18px;
             padding: 0.95rem 1rem;
             min-height: 102px;
@@ -169,6 +251,77 @@ def inject_styles() -> None:
             font-size: 0.9rem;
             margin-top: 0.3rem;
         }
+
+        [data-testid="stWidgetLabel"] p {
+            color: #6d4e39 !important;
+            font-weight: 700;
+        }
+
+        div[data-baseweb="input"] > div {
+            background: rgba(255, 249, 242, 0.98) !important;
+            border: 1px solid rgba(143, 104, 68, 0.32) !important;
+            border-radius: 16px !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+        }
+
+        div[data-baseweb="input"] > div:focus-within {
+            border-color: #bf6f38 !important;
+            box-shadow: 0 0 0 3px rgba(191, 111, 56, 0.16) !important;
+        }
+
+        div[data-baseweb="input"] input {
+            color: #2f241d !important;
+            caret-color: #9c4f28 !important;
+            font-weight: 600;
+        }
+
+        div[data-baseweb="input"] input::placeholder {
+            color: #947f72 !important;
+            opacity: 1 !important;
+        }
+
+        div[data-testid="stFormSubmitButton"] button,
+        div.stButton > button {
+            min-height: 3rem;
+            border-radius: 16px;
+            border: none;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            box-shadow: 0 12px 24px rgba(61, 41, 25, 0.14);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+        }
+
+        div.stButton > button {
+            background: linear-gradient(135deg, #2e3546 0%, #171d29 100%);
+            color: #fff8f1;
+        }
+
+        div[data-testid="stFormSubmitButton"] button,
+        div.stButton > button[kind="primary"] {
+            background: linear-gradient(135deg, #d86545 0%, #bb4938 100%);
+            color: #fff8f1;
+        }
+
+        div[data-testid="stFormSubmitButton"] button:hover,
+        div.stButton > button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 30px rgba(61, 41, 25, 0.18);
+            filter: brightness(1.03);
+        }
+
+        div[data-testid="stFormSubmitButton"] button:focus,
+        div.stButton > button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(191, 111, 56, 0.18), 0 16px 30px rgba(61, 41, 25, 0.18);
+        }
+
+        [data-testid="stProgressBar"] > div {
+            background-color: rgba(88, 70, 57, 0.18);
+        }
+
+        [data-testid="stProgressBar"] > div > div {
+            background: linear-gradient(90deg, #c36b3c 0%, #7d4b2c 100%);
+        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -212,6 +365,15 @@ def start_session() -> None:
 
 def restart_session() -> None:
     start_session()
+
+
+def return_home() -> None:
+    st.session_state.started = False
+    st.session_state.finished = False
+    st.session_state.feedback = None
+    st.session_state.submitted = False
+    st.session_state.last_answer = ""
+    st.session_state.answer_input = ""
 
 
 def current_term() -> str:
@@ -302,9 +464,12 @@ def render_home() -> None:
         )
 
     st.write("")
-    if st.button("Pokreni drill", type="primary", use_container_width=True):
-        start_session()
-        st.rerun()
+    st.button(
+        "Pokreni drill",
+        type="primary",
+        use_container_width=True,
+        on_click=start_session,
+    )
 
     st.caption("Ovaj folder je spreman za GitHub i Streamlit Cloud.")
 
@@ -375,29 +540,22 @@ def render_quiz() -> None:
             disabled=st.session_state.submitted,
             placeholder="Upiši pojam ovde",
         )
-        submitted = st.form_submit_button(
+        st.form_submit_button(
             "Proveri odgovor",
             type="primary",
             disabled=st.session_state.submitted,
             use_container_width=True,
+            on_click=submit_answer,
         )
-
-    if submitted:
-        submit_answer()
-        st.rerun()
 
     render_feedback()
 
     if st.session_state.submitted:
         is_last = index == total - 1
         next_label = "Prikaži rezultat" if is_last else "Sledeći pojam"
-        if st.button(next_label, use_container_width=True):
-            next_question()
-            st.rerun()
+        st.button(next_label, use_container_width=True, on_click=next_question)
 
-    if st.button("Pokreni novu rundu", use_container_width=True):
-        restart_session()
-        st.rerun()
+    st.button("Pokreni novu rundu", use_container_width=True, on_click=restart_session)
 
 
 def render_summary() -> None:
@@ -471,9 +629,7 @@ def render_summary() -> None:
     st.write("")
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("Igraj ponovo", type="primary", use_container_width=True):
-            restart_session()
-            st.rerun()
+        st.button("Igraj ponovo", type="primary", use_container_width=True, on_click=restart_session)
     with col2:
         if st.button("Povratak na početak", use_container_width=True):
             st.session_state.started = False
